@@ -27,7 +27,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
     <!--引用mybatis配置文件-->
        <!--<property name="configLocation" value="mybatis-config.xml"/>-->
         <!--指定mapper.xml 路径-->
-        <property name="mapperLocations" value="classpath:com/junjun/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/zhujun/mapper/*.xml"/>
     </bean>
     <!--将创建的sqlSessionFactory交给spring管理-->
 <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -50,21 +50,23 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         <property name="userMapper" ref=""/>
     </bean>
 -->
-    <bean id="user" class="com.junjun.pojo.User">
+<!--    <bean id="user" class="com.junjun.pojo.User">
         <property name="id" value="1"/>
         <property name="userName" value="莉莉"/>
         <property name="userPassword" value="123456"/>
     </bean>
     <bean id="adviceDemo" class="com.junjun.test.AdviceDemo"/>
-    <bean id="logAfter" class="com.junjun.test.LogAfter"/>
+    <bean id="logAfter" class="com.junjun.test.LogAfter"/>-->
  <!--   <aop:config>
         <aop:pointcut id="add" expression="execution(public void com.junjun.test.AdviceDemo.add())"/>
         <aop:advisor advice-ref="logAfter" pointcut-ref="add"/>
     </aop:config>-->
     <!--aop配置切入点-->
+<!--
     <aop:config>
         <aop:pointcut id="add" expression="execution(public void com.junjun.test.AdviceDemo.add())"/>
         <aop:advisor advice-ref="logAfter" pointcut-ref="add"/>
     </aop:config>
     <context:component-scan base-package="com.junjun.controller,com.junjun.service"/>
+-->
 </beans>

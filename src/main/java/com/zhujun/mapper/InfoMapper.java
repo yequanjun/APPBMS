@@ -1,4 +1,4 @@
 package com.zhujun.mapper;
 
-public class jhj {
+public interface InfoMapper {
 }

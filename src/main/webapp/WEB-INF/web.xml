@@ -20,7 +20,7 @@
   </servlet-mapping>
 
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <!--将spring配置文件纳入web项目-->
   <context-param>
