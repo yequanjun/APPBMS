@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+>
+<context:component-scan base-package="com.zhujun.controller"/>
+    <!--springmvc基础配置，基于此配置实现的-->
+    <mvc:annotation-driven/>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/"></property>
+            <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!--配置文件上传  id必须为multipartResolver   ioc容器在初始化时会自动寻找id为multipartResolver的bean-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="1024000"/>
+    </bean>
+    <!--静态资源映射，隐藏内部资源真实 路径-->
+    <mvc:resources mapping="/junjun/**" location="/static/"/>
+
+    <!--拦截器配置-->
+   <!-- <mvc:interceptors>
+        <mvc:interceptor>
+            &lt;!&ndash;path 拦截的规则 &ndash;&gt;
+            <mvc:mapping path="/**"/>
+            <bean class=""/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+</beans>
