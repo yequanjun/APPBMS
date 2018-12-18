@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhujun.mapper.AppInfoMapper">
+
+    <select id="queryApp" resultType="com.zhujun.pojo.AppInfo">
+        select i.*,d1.valueName as flatformName ,c1.`categoryName` as firstName,c2.`categoryName` as secondName
+        ,c3.`categoryName`as thirdName ,d2.valuename as statusName,v.versionNo as versionName
+        from app_info as i
+        inner join app_category as c1
+        on c1.id = i.categoryLevel1
+        inner join app_category as c2
+        on c2.id = i.categoryLevel2
+        inner join app_category as c3
+        on c3.id = i.categoryLevel3
+        inner join data_dictionary as d1
+        on i.`flatformId` = d1.valueId
+        inner join data_dictionary as d2
+        on i.`status` = d2.valueId
+        left join `app_version` as v
+        on i.versionId=v.id
+        where d1.typeCode='APP_FLATFORM'
+        and d2.typeCode='APP_STATUS'
+        <if test="softwareName != null">and i.softwareName like CONCAT('%',#{softwareName},'%')</if>
+        <if test="status != null and status!=0">and status=#{status}</if>
+        <if test="flatformId != null and flatformId!=0 ">and flatformId=#{flatformId}</if>
+        <if test="categoryLevel1 != null and categoryLevel1!=0">and categoryLevel1=#{categoryLevel1}</if>
+        <if test="categoryLevel2 != null and categoryLevel2!=0">and categoryLevel2=#{categoryLevel2}</if>
+        <if test="categoryLevel3 != null and categoryLevel3!=0">and categoryLevel3=#{categoryLevel3}</if>
+        limit #{start},#{size}
+    </select>
+    <select id="queryAllplatform" resultType="java.lang.String">
+        SELECT valueName FROM `data_dictionary` WHERE typeCode='APP_FLATFORM'
+    </select>
+
+    <select id="getAppCount" resultType="java.lang.Integer" parameterType="com.zhujun.pojo.AppInfo">
+
+        select count(1)
+        from app_info as i
+        inner join app_category as c1
+        on c1.id = i.categoryLevel1
+        inner join app_category as c2
+        on c2.id = i.categoryLevel2
+        inner join app_category as c3
+        on c3.id = i.categoryLevel3
+        inner join data_dictionary as d1
+        on i.`flatformId` = d1.valueId
+        inner join data_dictionary as d2
+        on i.`flatformId` = d2.valueId
+        left join `app_version` as v
+        on i.versionId=v.id
+        where d1.typeCode='APP_FLATFORM'
+        and d2.typeCode='APP_STATUS'
+        <if test="softwareName != null">and softwareName like CONCAT('%',#{softwareName},'%')</if>
+        <if test="status != null">and status=#{status}</if>
+        <if test="flatformId != null">and flatformId=#{flatformId}</if>
+        <if test="categoryLevel1 != null">and categoryLevel1=#{categoryLevel1}</if>
+        <if test="categoryLevel2 != null">and categoryLevel2=#{categoryLevel2}</if>
+        <if test="categoryLevel3 != null">and categoryLevel3=#{categoryLevel3}</if>
+    </select>
+</mapper>

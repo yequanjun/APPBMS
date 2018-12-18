@@ -9,13 +9,13 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
-<context:component-scan base-package="com.zhujun.controller"/>
+    <context:component-scan base-package="com.zhujun.controller,com.zhujun.service.impl"/>
     <!--springmvc基础配置，基于此配置实现的-->
     <mvc:annotation-driven/>
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-            <property name="prefix" value="/"></property>
-            <property name="suffix" value=".jsp"></property>
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
     </bean>
     <!--配置文件上传  id必须为multipartResolver   ioc容器在初始化时会自动寻找id为multipartResolver的bean-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -23,14 +23,14 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         <property name="maxUploadSize" value="1024000"/>
     </bean>
     <!--静态资源映射，隐藏内部资源真实 路径-->
-    <mvc:resources mapping="/junjun/**" location="/static/"/>
-
+    <mvc:resources mapping="/statics/**" location="/statics/"/>
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
     <!--拦截器配置-->
-   <!-- <mvc:interceptors>
-        <mvc:interceptor>
-            &lt;!&ndash;path 拦截的规则 &ndash;&gt;
-            <mvc:mapping path="/**"/>
-            <bean class=""/>
-        </mvc:interceptor>
-    </mvc:interceptors>-->
+    <!-- <mvc:interceptors>
+         <mvc:interceptor>
+             &lt;!&ndash;path 拦截的规则 &ndash;&gt;
+             <mvc:mapping path="/**"/>
+             <bean class=""/>
+         </mvc:interceptor>
+     </mvc:interceptors>-->
 </beans>

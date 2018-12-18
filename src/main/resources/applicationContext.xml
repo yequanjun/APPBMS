@@ -9,64 +9,79 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 "
 >
-<!--<bean id="userService" class="com.junjun.service.UserServiceImpl">
-</bean>-->
+    <!--<bean id="userService" class="com.junjun.service.UserServiceImpl">
+    </bean>-->
+    <context:component-scan base-package="com.zhujun.service"/>
     <!--读取数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
     <!--获取数据源（使用dbcp连接池）-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-       <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${user}"/>
-        <property name="password" value="${password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/appinfodb"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
     </bean>
     <!--将mybatis的核心类sqlSessionFactory在springIoc容器中创建-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--引用数据源-->
         <property name="dataSource" ref="dataSource"/>
-    <!--引用mybatis配置文件-->
-       <!--<property name="configLocation" value="mybatis-config.xml"/>-->
+        <!--引用mybatis配置文件-->
+        <!--<property name="configLocation" value="mybatis-config.xml"/>-->
         <!--指定mapper.xml 路径-->
         <property name="mapperLocations" value="classpath:com/zhujun/mapper/*.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            offsetAsPageNum=true
+                            rowBoundsWithCount=true
+                            pageSizeZero=true
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
     </bean>
     <!--将创建的sqlSessionFactory交给spring管理-->
-<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFacotory"/>
-        &lt;!&ndash;将该包中所有的接口产生所有的动态代理对象，对象名为接口名首字母小写&ndash;&gt;
-        <property name="basePackage" value="com.junjun.mapper"/>
-    </bean>-->
+    <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="sqlSessionFactoryBeanName" value="sqlSessionFacotory"/>
+            &lt;!&ndash;将该包中所有的接口产生所有的动态代理对象，对象名为接口名首字母小写&ndash;&gt;
+            <property name="basePackage" value="com.junjun.mapper"/>
+        </bean>-->
     <!--一个个配置 持久层对象-->
-<!--    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.junjun.mapper.UserMapper"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>-->
-        <!--统一扫描  配置 持久层对象 -->
+    <!--    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="com.junjun.mapper.UserMapper"/>
+            <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        </bean>-->
+    <!--统一扫描  配置 持久层对象 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.junjun.mapper.UserMapper"/>
+        <property name="basePackage" value="com.zhujun.mapper"/>
     </bean>
-<!--
+    <!--
 
-    <bean id="userService" class="com.junjun.service.UserServiceImpl">
-        <property name="userMapper" ref=""/>
-    </bean>
--->
-<!--    <bean id="user" class="com.junjun.pojo.User">
-        <property name="id" value="1"/>
-        <property name="userName" value="莉莉"/>
-        <property name="userPassword" value="123456"/>
-    </bean>
-    <bean id="adviceDemo" class="com.junjun.test.AdviceDemo"/>
-    <bean id="logAfter" class="com.junjun.test.LogAfter"/>-->
- <!--   <aop:config>
-        <aop:pointcut id="add" expression="execution(public void com.junjun.test.AdviceDemo.add())"/>
-        <aop:advisor advice-ref="logAfter" pointcut-ref="add"/>
-    </aop:config>-->
+        <bean id="userService" class="com.junjun.service.UserServiceImpl">
+            <property name="userMapper" ref=""/>
+        </bean>
+    -->
+    <!--  <bean id="user" class="com.junjun.pojo.User">
+      <property name="id" value="1"/>
+      <property name="userName" value="莉莉"/>
+      <property name="userPassword" value="123456"/>
+  </bean>
+      <bean id="adviceDemo" class="com.junjun.test.AdviceDemo"/>
+      <bean id="logAfter" class="com.junjun.test.LogAfter"/>-->
+    <!--   <aop:config>
+           <aop:pointcut id="add" expression="execution(public void com.junjun.test.AdviceDemo.add())"/>
+           <aop:advisor advice-ref="logAfter" pointcut-ref="add"/>
+       </aop:config>-->
     <!--aop配置切入点-->
-<!--
-    <aop:config>
+    <!--<aop:config>
         <aop:pointcut id="add" expression="execution(public void com.junjun.test.AdviceDemo.add())"/>
         <aop:advisor advice-ref="logAfter" pointcut-ref="add"/>
     </aop:config>
-    <context:component-scan base-package="com.junjun.controller,com.junjun.service"/>
--->
+    <context:component-scan base-package="com.junjun.controller,com.junjun.service"/>-->
 </beans>

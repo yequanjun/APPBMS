@@ -3,135 +3,135 @@ package com.zhujun.pojo;
 
 public class AppVersion {
 
-  private long id;
-  private long appId;
-  private String versionNo;
-  private String versionInfo;
-  private long publishStatus;
-  private String downloadLink;
-  private double versionSize;
-  private long createdBy;
-  private java.sql.Timestamp creationDate;
-  private long modifyBy;
-  private java.sql.Timestamp modifyDate;
-  private String apkLocPath;
-  private String apkFileName;
+    private long id;
+    private long appId;
+    private String versionNo;
+    private String versionInfo;
+    private long publishStatus;
+    private String downloadLink;
+    private double versionSize;
+    private long createdBy;
+    private java.sql.Timestamp creationDate;
+    private long modifyBy;
+    private java.sql.Timestamp modifyDate;
+    private String apkLocPath;
+    private String apkFileName;
 
 
-  public long getId() {
-    return id;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public long getAppId() {
-    return appId;
-  }
-
-  public void setAppId(long appId) {
-    this.appId = appId;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
 
-  public String getVersionNo() {
-    return versionNo;
-  }
+    public long getAppId() {
+        return appId;
+    }
 
-  public void setVersionNo(String versionNo) {
-    this.versionNo = versionNo;
-  }
-
-
-  public String getVersionInfo() {
-    return versionInfo;
-  }
-
-  public void setVersionInfo(String versionInfo) {
-    this.versionInfo = versionInfo;
-  }
+    public void setAppId(long appId) {
+        this.appId = appId;
+    }
 
 
-  public long getPublishStatus() {
-    return publishStatus;
-  }
+    public String getVersionNo() {
+        return versionNo;
+    }
 
-  public void setPublishStatus(long publishStatus) {
-    this.publishStatus = publishStatus;
-  }
-
-
-  public String getDownloadLink() {
-    return downloadLink;
-  }
-
-  public void setDownloadLink(String downloadLink) {
-    this.downloadLink = downloadLink;
-  }
+    public void setVersionNo(String versionNo) {
+        this.versionNo = versionNo;
+    }
 
 
-  public double getVersionSize() {
-    return versionSize;
-  }
+    public String getVersionInfo() {
+        return versionInfo;
+    }
 
-  public void setVersionSize(double versionSize) {
-    this.versionSize = versionSize;
-  }
-
-
-  public long getCreatedBy() {
-    return createdBy;
-  }
-
-  public void setCreatedBy(long createdBy) {
-    this.createdBy = createdBy;
-  }
+    public void setVersionInfo(String versionInfo) {
+        this.versionInfo = versionInfo;
+    }
 
 
-  public java.sql.Timestamp getCreationDate() {
-    return creationDate;
-  }
+    public long getPublishStatus() {
+        return publishStatus;
+    }
 
-  public void setCreationDate(java.sql.Timestamp creationDate) {
-    this.creationDate = creationDate;
-  }
-
-
-  public long getModifyBy() {
-    return modifyBy;
-  }
-
-  public void setModifyBy(long modifyBy) {
-    this.modifyBy = modifyBy;
-  }
+    public void setPublishStatus(long publishStatus) {
+        this.publishStatus = publishStatus;
+    }
 
 
-  public java.sql.Timestamp getModifyDate() {
-    return modifyDate;
-  }
+    public String getDownloadLink() {
+        return downloadLink;
+    }
 
-  public void setModifyDate(java.sql.Timestamp modifyDate) {
-    this.modifyDate = modifyDate;
-  }
-
-
-  public String getApkLocPath() {
-    return apkLocPath;
-  }
-
-  public void setApkLocPath(String apkLocPath) {
-    this.apkLocPath = apkLocPath;
-  }
+    public void setDownloadLink(String downloadLink) {
+        this.downloadLink = downloadLink;
+    }
 
 
-  public String getApkFileName() {
-    return apkFileName;
-  }
+    public double getVersionSize() {
+        return versionSize;
+    }
 
-  public void setApkFileName(String apkFileName) {
-    this.apkFileName = apkFileName;
-  }
+    public void setVersionSize(double versionSize) {
+        this.versionSize = versionSize;
+    }
+
+
+    public long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+    public java.sql.Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(java.sql.Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
+
+
+    public long getModifyBy() {
+        return modifyBy;
+    }
+
+    public void setModifyBy(long modifyBy) {
+        this.modifyBy = modifyBy;
+    }
+
+
+    public java.sql.Timestamp getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(java.sql.Timestamp modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+
+    public String getApkLocPath() {
+        return apkLocPath;
+    }
+
+    public void setApkLocPath(String apkLocPath) {
+        this.apkLocPath = apkLocPath;
+    }
+
+
+    public String getApkFileName() {
+        return apkFileName;
+    }
+
+    public void setApkFileName(String apkFileName) {
+        this.apkFileName = apkFileName;
+    }
 
 }
